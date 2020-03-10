@@ -140,9 +140,11 @@ vname = {'GrossPrimaryProductivity':'gpp',
 	 'NetRadiation':'rnet'}
 for root,subdirs,files in os.walk(args.build_dir[0]):
     files = [f for f in files if "Benchmark" not in f and f.endswith(".nc")]
+    print(files)
     for fname in files:
         pname = os.path.join(root,fname)
         site = fname.replace(".nc","").split("_")[-2]
+        print(site)
         var = (root.split("/")[-2])
         with Dataset(pname) as dset:
             lat = dset.lat
